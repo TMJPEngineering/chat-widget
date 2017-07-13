@@ -1,0 +1,76 @@
+.mini-chat-container {
+    width: 370px;
+    height: calc(100% - 75px);
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 20000;
+}
+
+.mini-chat-menu {
+    width: 60px;
+    height: 60px;
+    background: #3273dc;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 21px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform .16s linear, opacity .08s linear, -webkit-transform .16s linear;
+    z-index: 10000;
+}
+
+.mini-chat-menu.show {
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.mini-chat-pane {
+    width: inherit;
+    height: calc(100% - 75px);
+    min-height: 250px;
+    max-height: 520px;
+    position: relative;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, .16);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10000;
+    opacity: 1;
+    background: white;
+    display: none;
+}
+
+.mini-chat-pane:focus {
+    background: black;
+}
+
+.mini-chat-pane.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.mini-chat-iframe {
+    display: none;
+}
+
+.mini-chat-iframe.show {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.mini-chat-menu-icon {
+    color: #ffffff;
+    display: block;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; bottom: -10px; }
+    100% { opacity: 1; bottom: 0px; }
+}

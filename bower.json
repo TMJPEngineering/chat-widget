@@ -1,0 +1,21 @@
+{
+  "name": "chat-support",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "John Conrad Lumacad <johnconradl18@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "bulma": "^0.4.3"
+  }
+}
