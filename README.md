@@ -10,7 +10,7 @@ To install the framework, run this command and you're good to go.
 npm run setup
 ```
 
-## Chat Widget CDN
+## CDN
 
 - CSS
   - https://cdn.rawgit.com/TMJPEngineering/chat-widget/d730a2a3/resources/assets/css/chat.css
