@@ -1,6 +1,8 @@
 .mini-chat-container {
     width: 370px;
-    height: calc(100% - 75px);
+    height: calc(100% - 75px - 20px - 20px);
+    min-height: 320px;
+    max-height: 590px;
     position: fixed;
     right: 20px;
     bottom: 20px;
@@ -18,9 +20,6 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 2px 21px rgba(0, 0, 0, 0.3);
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: transform .16s linear, opacity .08s linear, -webkit-transform .16s linear;
     z-index: 10000;
 }
@@ -66,6 +65,11 @@
 }
 
 .mini-chat-menu-icon {
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: #ffffff;
     display: block;
 }
