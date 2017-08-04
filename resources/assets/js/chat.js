@@ -1,7 +1,7 @@
 /* eslint no-shadow:*/
 
 var config = {
-    link: "http://example.com"
+    link: "http://localhost:4000"
 }
 
 activate(config);
@@ -30,7 +30,7 @@ function activate(config) {
 
     document.body.appendChild(miniChatContainer);
 
-    // Set life ring icon
+    // Set envelope icon
     miniChatMenuIconClass[0].setAttribute('src', envelopeImage);
 
     document.getElementById('mini-chat-menu').addEventListener('click', function () {

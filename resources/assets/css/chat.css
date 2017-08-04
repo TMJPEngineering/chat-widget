@@ -1,6 +1,7 @@
 .mini-chat-container {
-    width: 370px;
-    height: calc(100% - 75px - 20px - 20px);
+    max-width: 370px;
+    width: calc(100% - 7vh);
+    height: calc(100% - 50px);
     min-height: 320px;
     max-height: 590px;
     position: fixed;
@@ -12,7 +13,7 @@
 .mini-chat-menu {
     width: 60px;
     height: 60px;
-    background: #3273dc;
+    background: #253878;
     cursor: pointer;
     position: fixed;
     right: 20px;
@@ -30,6 +31,11 @@
     transform: rotate(-90deg);
 }
 
+.mini-chat-menu:active {
+    transition-timing-function: ease-out;
+    transform: translateY(10%);
+}
+
 .mini-chat-pane {
     width: inherit;
     height: calc(100% - 75px);
@@ -41,7 +47,6 @@
     overflow: hidden;
     z-index: 10000;
     opacity: 1;
-    background: white;
     display: none;
 }
 
@@ -51,6 +56,7 @@
 
 .mini-chat-pane.show {
     display: block;
+    width: 100%;
     animation: fadeIn 0.3s ease;
 }
 
