@@ -2,8 +2,7 @@
 
 var express = require('express'),
     env = require('node-env-file'),
-    app = express(),
-    server = require('http').createServer(app);
+    app = express();
 
 var __env = env(__dirname + '/.env');
 
@@ -15,6 +14,8 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/resources/views/index.html')
 });
 
-app.listen(__env.NODE_PORT, function () {
+var server = require('http').createServer(app);
+
+server.listen(__env.NODE_PORT, function () {
     console.log('Listen localhost:' + __env.NODE_PORT);
 });

@@ -1,10 +1,52 @@
 /* eslint no-shadow:*/
-
 var config = {
-    link: "http://localhost:4000"
+    token: getCookie('_chat-token'),
+    link: 'http://localhost:4000'
+};
+
+if (config.token == undefined) {
+    fetchIp('https://jsonip.com/');
+} else {
+    config.link = config.link + '?token=' + config.token;
+    activate(config);
 }
 
-activate(config);
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+function fetchIp(url) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = JSON.parse(this.responseText);
+            var ipAddress = result.ip;
+            var userAgent = navigator.userAgent;
+            fetchToken(ipAddress, userAgent);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function fetchToken(ipAddress, userAgent) {
+    var xmlhttp = new XMLHttpRequest();
+    var url = config.link + '/generate-token?ip=' + ipAddress + '&agent=' + userAgent;
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = JSON.parse(this.responseText);
+            var date = new Date(result.expired_at);
+            document.cookie = '_chat-token=' + result.value + '; expires=' + date.toUTCString() + ';';
+            config.link = config.link + '?token=' + result.value;
+            activate(config);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
 
 function activate(config) {
     var miniChatContainer = document.createElement('div');
