@@ -1,21 +1,4 @@
 /* eslint no-shadow:*/
-var config = {
-    token: getCookie('_chat-token'),
-    link: 'http://localhost:4000'
-};
-
-if (config.token == undefined) {
-    fetchIp('https://jsonip.com/');
-} else {
-    config.link = config.link + '?token=' + config.token;
-    activate(config);
-}
-
-function getCookie(name) {
-    var value = "; " + document.cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length == 2) return parts.pop().split(";").shift();
-}
 
 function fetchIp(url) {
     var xmlhttp = new XMLHttpRequest();
@@ -38,14 +21,36 @@ function fetchToken(ipAddress, userAgent) {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(this.responseText);
-            var date = new Date(result.expired_at);
-            document.cookie = '_chat-token=' + result.value + '; expires=' + date.toUTCString() + ';';
+            eraseCookie('_chat-token');
+            createCookie('_chat-token', result.value, result.expired_at);
             config.link = config.link + '?token=' + result.value;
             activate(config);
         }
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
+}
+
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+function createCookie(name, value, date) {
+    if (date !== -1) {
+        var date = new Date(date);
+        var expires = "; expires=" + date.toGMTString();
+    }
+    else {
+        var expires = "";
+    }
+    var cookie = name + "=" + value + expires + "; path=/";
+    document.cookie = cookie;
+}
+
+function eraseCookie(name) {
+    createCookie(name, "", -1);
 }
 
 function activate(config) {
@@ -91,4 +96,16 @@ function activate(config) {
     document.getElementById('mini-chat-menu').addEventListener('mousedown', function(event) {
         event.preventDefault();
     }, false);
+}
+
+var config = {
+    token: getCookie('_chat-token'),
+    link: 'http://10.10.40.10:4001'
+};
+
+if (config.token == undefined) {
+    fetchIp('https://jsonip.com/');
+} else {
+    config.link = config.link + '?token=' + config.token;
+    activate(config);
 }
