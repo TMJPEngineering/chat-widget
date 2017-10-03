@@ -3,10 +3,10 @@ nodeDir="node_modules"
 bowerDir="bower_components"
 
 # If the value of nodeDir is not exist then run the command
-if [[ ! -d "$nodeDir" ]]; then
-    echo "Installing npm libraries..."
-    npm install
-fi
+# if [[ ! -d "$nodeDir" ]]; then
+echo "Installing npm libraries..."
+npm install
+# fi
 
 # If bower command is not exist, then install using npm
 if ! bowerCommand="$(type -p "bower")" || [ -z "$bowerCommand" ]; then

@@ -14,11 +14,10 @@
     "express": "^4.15.3",
     "gulp": "^3.9.1",
     "node-env-file": "^0.1.8",
-    "pump": "^1.0.2"
-  },
-  "devDependencies": {
+    "pump": "^1.0.2",
     "gulp-copy": "^1.0.0",
     "gulp-minify": "^1.0.0",
     "gulp-uglify": "^3.0.0"
-  }
+  },
+  "devDependencies": {}
 }
