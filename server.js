@@ -5,6 +5,7 @@ var express = require('express'),
     app = express();
 
 var __env = env(__dirname + '/.env');
+var port = __env.PORT || 3000;
 
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/public', express.static(__dirname + '/public'));
@@ -16,6 +17,6 @@ app.get('/', function (req, res) {
 
 var server = require('http').createServer(app);
 
-server.listen(__env.PORT, function () {
-    console.log('Listen on port' + __env.PORT);
+server.listen(port, function () {
+    console.log('Listen on port' + port);
 });
