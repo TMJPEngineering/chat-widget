@@ -100,7 +100,7 @@ function activate(config) {
 
 var config = {
     token: getCookie('_chat-token'),
-    link: 'https://tmj-chat-widget.herokuapp.com'
+    link: 'https://tmj-mini-chat.herokuapp.com'
 };
 
 if (config.token == undefined) {
