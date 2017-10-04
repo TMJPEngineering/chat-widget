@@ -16,6 +16,6 @@ app.get('/', function (req, res) {
 
 var server = require('http').createServer(app);
 
-server.listen(__env.NODE_PORT, function () {
-    console.log('Listen localhost:' + __env.NODE_PORT);
+server.listen(__env.PORT, function () {
+    console.log('Listen on port' + __env.PORT);
 });
