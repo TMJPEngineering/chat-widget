@@ -13,9 +13,9 @@ npm run setup
 ## CDN
 
 - CSS
-  - https://cdn.rawgit.com/TMJPEngineering/chat-widget/38d65bba/resources/assets/css/chat.css
+  - https://cdn.rawgit.com/jcmlumacad/chat-widget/7894593b/resources/assets/css/chat.css
 - JS
-  - https://cdn.rawgit.com/TMJPEngineering/chat-widget/38d65bba/resources/assets/js/chat.js
+  - https://cdn.rawgit.com/jcmlumacad/chat-widget/7894593b/resources/assets/js/chat.js
 
 ## Screenshots
 
